@@ -1,0 +1,6 @@
+{
+  "name": "Excellence Team",
+  "description": "Entreprise technologique d'ingénierie logicielle, cybersécurité, IA & data au Bénin et en Afrique francophone. Technology built with discipline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

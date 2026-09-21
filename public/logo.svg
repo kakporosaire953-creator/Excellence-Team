@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1000 650" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Excellence Team Red-to-Orange signature aerodynamic gradient -->
+    <linearGradient id="etRedGradient" x1="235" y1="220" x2="915" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF161E" />
+      <stop offset="30%" stop-color="#FF3600" />
+      <stop offset="65%" stop-color="#FF5400" />
+      <stop offset="88%" stop-color="#FF7600" />
+      <stop offset="100%" stop-color="#FF8A00" />
+    </linearGradient>
+
+    <!-- Metallic obsidian sheen on middle wing top facet -->
+    <linearGradient id="etFacetTop" x1="240" y1="256" x2="480" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2C2C2C" />
+      <stop offset="60%" stop-color="#1A1A1A" />
+      <stop offset="100%" stop-color="#0E0E0E" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. DYNAMIC "T" & UPPER WING -->
+  <path
+    d="M 235 220
+       C 235 152, 280 106, 360 106
+       L 740 106
+       C 790 106, 850 100, 915 104
+       C 870 128, 815 180, 755 204
+       L 595 420
+       L 464 540
+       L 580 220
+       L 360 220
+       L 235 220 Z"
+    fill="url(#etRedGradient)"
+  />
+
+  <!-- 2. MIDDLE "E" WING (with aerodynamic curve & subtle obsidian facet) -->
+  <g>
+    <!-- Base shape -->
+    <path
+      d="M 242 256
+         L 504 256
+         C 490 292, 448 350, 364 368
+         C 320 372, 248 372, 185 370
+         L 242 256 Z"
+      fill="#0A0A0A"
+    />
+    <!-- Subtle upper reflective facet matching official render -->
+    <path
+      d="M 242 256
+         L 504 256
+         C 486 285, 442 324, 380 338
+         C 320 348, 235 348, 185 370
+         L 242 256 Z"
+      fill="url(#etFacetTop)"
+      opacity="0.85"
+    />
+  </g>
+
+  <!-- 3. LOWER "E" WING -->
+  <path
+    d="M 170 404
+       L 460 404
+       C 410 460, 330 504, 240 508
+       L 136 508
+       L 170 404 Z"
+    fill="#0A0A0A"
+  />
+</svg>
