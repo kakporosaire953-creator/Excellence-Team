@@ -73,7 +73,7 @@ ${formData.message}`;
   return (
     <LiquidGlassCard id="contact-experience-module" material="highlight" className="p-0 overflow-hidden">
       {/* Mode Switcher */}
-      <div className="flex border-b border-[#0A0A0A]/10 bg-white/40 backdrop-blur-md">
+      <div className="flex border-b border-[#0A0A0A]/10 bg-white/40 backdrop-blur-md gpu-glass will-change-[backdrop-filter,transform] transform-gpu">
         <button
           type="button"
           onClick={() => setFormMode('project')}

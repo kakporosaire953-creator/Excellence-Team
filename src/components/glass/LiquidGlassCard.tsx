@@ -63,7 +63,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
       id={id}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden transition-all duration-300 rounded-[24px] sm:rounded-[28px] ${materialClassMap[material]} ${
+      className={`relative overflow-hidden transition-all duration-300 rounded-[24px] sm:rounded-[28px] gpu-glass will-change-[backdrop-filter,transform] transform-gpu ${materialClassMap[material]} ${
         interactive ? 'cursor-pointer hover:-translate-y-1 hover:shadow-2xl group' : ''
       } ${className}`}
       {...props}

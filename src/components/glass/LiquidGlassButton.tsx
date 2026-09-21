@@ -49,7 +49,7 @@ export const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
       whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
       whileHover={shouldReduceMotion ? undefined : { y: -1 }}
       transition={{ duration: 0.15, ease: MOTION_EASE }}
-      className={`relative inline-flex items-center justify-center gap-2 rounded-[2px] transition-colors cursor-pointer select-none group active:scale-[0.98] ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+      className={`relative inline-flex items-center justify-center gap-2 rounded-[2px] transition-colors cursor-pointer select-none group active:scale-[0.98] gpu-glass will-change-[backdrop-filter,transform] transform-gpu ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
       {...props}
     >
       {/* Specular hairline top reflection */}

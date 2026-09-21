@@ -34,7 +34,7 @@ export const LiquidGlassBadge: React.FC<LiquidGlassBadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono font-bold uppercase tracking-wider rounded-[2px] transition-all ${sizeClasses} ${variantMap[variant]} ${className}`}
+      className={`inline-flex items-center gap-1.5 font-mono font-bold uppercase tracking-wider rounded-[2px] transition-all gpu-glass will-change-[backdrop-filter,transform] transform-gpu ${sizeClasses} ${variantMap[variant]} ${className}`}
     >
       {indicator && (
         <span

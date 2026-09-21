@@ -30,7 +30,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   return (
     <div
       id="project-detail-modal-backdrop"
-      className="fixed inset-0 z-50 bg-[#0A0A0A]/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-[#0A0A0A]/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-200 gpu-glass will-change-[backdrop-filter,transform] transform-gpu"
       onClick={onClose}
     >
       <div

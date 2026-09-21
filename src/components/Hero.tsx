@@ -233,7 +233,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
               {/* 4 Optical Frosted Glass Metrics Tiles */}
               <div className="grid grid-cols-2 gap-3 pt-1 text-xs">
-                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)] gpu-glass will-change-[backdrop-filter,transform] transform-gpu">
                   <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     COLLECTIF
                   </div>
@@ -242,7 +242,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)] gpu-glass will-change-[backdrop-filter,transform] transform-gpu">
                   <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     DIRECTION
                   </div>
@@ -251,7 +251,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)] gpu-glass will-change-[backdrop-filter,transform] transform-gpu">
                   <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     EXPANSION
                   </div>
@@ -260,7 +260,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)] gpu-glass will-change-[backdrop-filter,transform] transform-gpu">
                   <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     EXIGENCE
                   </div>

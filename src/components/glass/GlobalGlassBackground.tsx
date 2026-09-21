@@ -44,7 +44,7 @@ export const GlobalGlassBackground: React.FC = () => {
           duration: 10,
           ease: 'easeInOut',
         }}
-        className="absolute -top-12 right-[8%] w-80 h-80 sm:w-[460px] sm:h-[460px] rounded-full"
+        className="absolute -top-12 right-[8%] w-80 h-80 sm:w-[460px] sm:h-[460px] rounded-full transform-gpu will-change-transform"
       >
         <div className="absolute inset-0 rounded-full translate-y-20 translate-x-12 bg-black/35 blur-3xl" />
         <div
@@ -69,7 +69,7 @@ export const GlobalGlassBackground: React.FC = () => {
           duration: 12,
           ease: 'easeInOut',
         }}
-        className="absolute top-[32%] -left-20 sm:left-[4%] w-72 h-72 sm:w-96 sm:h-96 rounded-full"
+        className="absolute top-[32%] -left-20 sm:left-[4%] w-72 h-72 sm:w-96 sm:h-96 rounded-full transform-gpu will-change-transform"
       >
         <div className="absolute inset-0 rounded-full translate-y-16 translate-x-12 bg-black/35 blur-3xl" />
         <div
@@ -94,7 +94,7 @@ export const GlobalGlassBackground: React.FC = () => {
           duration: 9,
           ease: 'easeInOut',
         }}
-        className="absolute top-[18%] right-[32%] w-48 h-48 sm:w-64 sm:h-64 rounded-full"
+        className="absolute top-[18%] right-[32%] w-48 h-48 sm:w-64 sm:h-64 rounded-full transform-gpu will-change-transform"
       >
         <div className="absolute inset-0 rounded-full translate-y-14 translate-x-8 bg-[#FF4A16]/40 blur-3xl" />
         <div
@@ -118,7 +118,7 @@ export const GlobalGlassBackground: React.FC = () => {
           duration: 11,
           ease: 'easeInOut',
         }}
-        className="absolute top-[52%] right-[12%] w-60 h-60 sm:w-80 sm:h-80 rounded-full"
+        className="absolute top-[52%] right-[12%] w-60 h-60 sm:w-80 sm:h-80 rounded-full transform-gpu will-change-transform"
       >
         <div className="absolute inset-0 rounded-full translate-y-14 translate-x-8 bg-black/25 blur-2xl" />
         <div
@@ -142,7 +142,7 @@ export const GlobalGlassBackground: React.FC = () => {
           duration: 13,
           ease: 'easeInOut',
         }}
-        className="absolute top-[75%] left-[10%] w-72 h-72 sm:w-96 sm:h-96 rounded-full"
+        className="absolute top-[75%] left-[10%] w-72 h-72 sm:w-96 sm:h-96 rounded-full transform-gpu will-change-transform"
       >
         <div className="absolute inset-0 rounded-full translate-y-18 translate-x-12 bg-black/40 blur-3xl" />
         <div
@@ -166,7 +166,7 @@ export const GlobalGlassBackground: React.FC = () => {
           duration: 8.5,
           ease: 'easeInOut',
         }}
-        className="absolute bottom-[2%] right-[18%] w-52 h-52 sm:w-72 sm:h-72 rounded-full"
+        className="absolute bottom-[2%] right-[18%] w-52 h-52 sm:w-72 sm:h-72 rounded-full transform-gpu will-change-transform"
       >
         <div className="absolute inset-0 rounded-full translate-y-14 translate-x-8 bg-[#FF4A16]/35 blur-3xl" />
         <div

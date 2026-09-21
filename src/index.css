@@ -45,7 +45,25 @@
    LIQUID GLASS MATERIAL SYSTEM (FIGMA 2025/2026 MASTERCLASS)
    Optical realism: physical double-bevel, 32px diffuse blur,
    high refraction over warm mineral studio canvas.
+   Optimized with GPU layer promotion & will-change: backdrop-filter
+   for buttery-smooth 60/120fps scrolling transitions.
    ======================================================== */
+
+/* GPU Accelerated Backdrop-Filter Layer Base */
+.gpu-glass,
+.glass-primary,
+.glass-secondary,
+.glass-floating,
+.glass-highlight,
+.glass-deep,
+[class*="backdrop-blur"] {
+  will-change: backdrop-filter;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
 /* Glass Primary: Authentic Frosted Liquid Glass Slab */
 .glass-primary {
@@ -138,11 +156,14 @@
 
 /* Reduced motion overrides for glass and blurs */
 @media (prefers-reduced-motion: reduce) {
+  .gpu-glass,
   .glass-primary,
   .glass-secondary,
   .glass-floating,
   .glass-highlight,
-  .glass-deep {
+  .glass-deep,
+  [class*="backdrop-blur"] {
+    will-change: auto;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: #FFFFFF;

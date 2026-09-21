@@ -83,7 +83,7 @@ export default function App() {
       {/* Application Body Layout Wrapper: Shared physical z-axis depth with glass-primary material and subtle border effects */}
       <main
         id="app-layout-wrapper"
-        className="flex-1 w-full flex flex-col relative z-10 glass-primary border-x-0 border-t border-b border-white/70 shadow-[inset_0_1.5px_2px_0_rgba(255,255,255,0.95),inset_0_-1.5px_2px_0_rgba(0,0,0,0.04)] transition-all duration-300"
+        className="flex-1 w-full flex flex-col relative z-10 glass-primary border-x-0 border-t border-b border-white/70 shadow-[inset_0_1.5px_2px_0_rgba(255,255,255,0.95),inset_0_-1.5px_2px_0_rgba(0,0,0,0.04)] transition-all duration-300 gpu-glass will-change-[backdrop-filter,transform] transform-gpu"
       >
         <AnimatePresence mode="wait">
           <PageTransition key={currentView} viewKey={currentView} className="flex-1 w-full flex flex-col">

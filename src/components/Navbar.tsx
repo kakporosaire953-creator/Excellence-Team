@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
         initial={shouldReduceMotion ? { opacity: 1 } : { y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.35, ease: MOTION_EASE }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out specular-top ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out specular-top gpu-glass will-change-[backdrop-filter,transform] transform-gpu ${
           isScrolled
             ? 'glass-floating border-b border-white/80 py-2.5 sm:py-3 shadow-[0_12px_32px_-10px_rgba(10,10,10,0.08)] text-[#0A0A0A]'
             : 'bg-white/40 backdrop-blur-md border-b border-white/40 py-4 sm:py-5 text-[#0A0A0A]'
@@ -71,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           </a>
 
           {/* Desktop Navigation Links: CALM, LEGIBLE, ELEGANT with micro-interactions */}
-          <nav className="hidden md:flex items-center gap-1.5 p-1 glass-panel rounded-full border border-white/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
+          <nav className="hidden md:flex items-center gap-1.5 p-1 glass-panel rounded-full border border-white/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)] gpu-glass will-change-[backdrop-filter,transform] transform-gpu">
             {navItems.map((item) => {
               const isActive = currentView === item.id;
               return (
