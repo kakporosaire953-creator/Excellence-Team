@@ -11,6 +11,7 @@ import { TeamView } from './components/views/TeamView';
 import { JournalView } from './components/views/JournalView';
 import { ContactView } from './components/views/ContactView';
 import { PageTransition } from './components/motion/MotionPrimitives';
+import { GlobalGlassBackground } from './components/glass/GlobalGlassBackground';
 
 export default function App() {
   // Derive initial view strictly from URL pathname (or fallback to hash)
@@ -69,14 +70,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F6] text-[#0A0A0A] font-inter selection:bg-[#FF4A16] selection:text-white">
+    <div
+      id="app-root-layout"
+      className="min-h-screen flex flex-col bg-transparent text-[#0A0A0A] font-inter selection:bg-[#FF4A16] selection:text-white relative overflow-x-hidden"
+    >
+      {/* Global 3D Studio Canvas & Ambient Tactile Spheres */}
+      <GlobalGlassBackground />
+
       {/* Global Fixed Navigation with scroll compaction */}
       <Navbar currentView={currentView} onNavigate={handleNavigate} />
 
-      {/* Main View Router with fluid page transitions */}
-      <main className="flex-1 w-full flex flex-col">
+      {/* Application Body Layout Wrapper: Shared physical z-axis depth with glass-primary material and subtle border effects */}
+      <main
+        id="app-layout-wrapper"
+        className="flex-1 w-full flex flex-col relative z-10 glass-primary border-x-0 border-t border-b border-white/70 shadow-[inset_0_1.5px_2px_0_rgba(255,255,255,0.95),inset_0_-1.5px_2px_0_rgba(0,0,0,0.04)] transition-all duration-300"
+      >
         <AnimatePresence mode="wait">
-          <PageTransition key={currentView} viewKey={currentView} className="flex-1 w-full">
+          <PageTransition key={currentView} viewKey={currentView} className="flex-1 w-full flex flex-col">
             {currentView === 'home' && <HomeView onNavigate={handleNavigate} />}
             {currentView === 'work' && <WorkView onNavigate={handleNavigate} />}
             {currentView === 'services' && <ServicesView onNavigate={handleNavigate} />}

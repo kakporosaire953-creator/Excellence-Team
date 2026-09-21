@@ -12,7 +12,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer id="app-footer" className="bg-[#0A0A0A] text-white pt-0 pb-12 relative overflow-hidden">
+    <footer id="app-footer" className="glass-deep text-white border-t border-white/20 mt-12 sm:mt-20 pt-0 pb-12 relative overflow-hidden shadow-2xl">
       {/* Prismatic glass dividing bar at transition */}
       <PrismaticGlassBar />
 

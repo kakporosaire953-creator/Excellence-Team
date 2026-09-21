@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { PageView } from '../../types';
 import { SERVICE_PILLARS, ECONOMIC_MODEL } from '../../data/services';
+import { LiquidGlassCard } from '../glass/LiquidGlassCard';
+import { LiquidGlassBadge } from '../glass/LiquidGlassBadge';
+import { LiquidGlassButton } from '../glass/LiquidGlassButton';
 import {
   Layers,
   BrainCircuit,
@@ -36,11 +39,13 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div id="services-page" className="w-full pt-28 pb-24 bg-[#FAF8F6]">
+    <div id="services-page" className="w-full pt-28 pb-24 bg-transparent relative z-10">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#0A0A0A]/10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0A0A0A]/10 text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-4">
-          CAPACITÉS D’INGÉNIERIE & OFFRES OFFICIELLES
+        <div className="mb-4">
+          <LiquidGlassBadge variant="vermilion" size="sm">
+            CAPACITÉS D’INGÉNIERIE & OFFRES OFFICIELLES
+          </LiquidGlassBadge>
         </div>
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0A0A0A] leading-tight uppercase">
           THE ENGINEERING BEHIND THE WORK<span className="text-[#FF4A16]">/</span>
@@ -53,35 +58,38 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
       {/* Main Pillars Navigation & Deep Dive */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         {/* Horizontal Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 border-b border-[#0A0A0A]/10 pb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 border-b border-[#0A0A0A]/10 pb-6">
           {SERVICE_PILLARS.map((pillar) => {
             const isActive = pillar.id === activePillarId;
             return (
-              <button
+              <LiquidGlassCard
                 key={pillar.id}
+                material={isActive ? 'highlight' : 'secondary'}
+                interactive
                 onClick={() => setActivePillarId(pillar.id)}
-                className={`p-4 text-left border transition-all cursor-pointer flex flex-col justify-between rounded-[2px] ${
-                  isActive
-                    ? 'bg-[#0A0A0A] text-white border-[#0A0A0A] shadow-xs'
-                    : 'bg-white text-[#555555] border-[#0A0A0A]/10 hover:border-[#0A0A0A]/30'
+                className={`p-4 cursor-pointer flex flex-col justify-between transition-all ${
+                  isActive ? 'ring-2 ring-[#FF4A16] shadow-lg' : 'opacity-85 hover:opacity-100'
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-3">
                   <span className={`text-[11px] font-mono font-bold ${isActive ? 'text-[#FF4A16]' : 'text-[#888888]'}`}>
                     {pillar.number}/
                   </span>
                   {getPillarIcon(pillar.icon)}
                 </div>
-                <div className="font-bold text-xs uppercase tracking-wider">
+                <div className="font-bold text-xs uppercase tracking-wider text-[#0A0A0A]">
                   {pillar.title}
                 </div>
-              </button>
+              </LiquidGlassCard>
             );
           })}
         </div>
 
         {/* Active Pillar Detailed View */}
-        <div className="mt-8 bg-white border border-[#0A0A0A]/10 p-6 sm:p-10 shadow-xs rounded-[2px]">
+        <LiquidGlassCard
+          material="primary"
+          className="mt-8 p-6 sm:p-10 shadow-xl"
+        >
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 pb-8 border-b border-[#0A0A0A]/10">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -100,23 +108,29 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            <button
+            <LiquidGlassButton
+              variant="vermilion"
+              size="md"
               onClick={() => onNavigate('contact')}
-              className="px-6 py-3.5 bg-[#FF4A16] hover:bg-[#E03F0E] text-white font-bold text-xs tracking-wider uppercase transition-colors shrink-0 flex items-center gap-2 cursor-pointer rounded-[2px]"
+              icon={<ArrowRight className="w-4 h-4" />}
             >
-              <span>DEMANDER UNE PROPOSITION</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              DEMANDER UNE PROPOSITION
+            </LiquidGlassButton>
           </div>
 
           {/* Detailed Capabilities Matrix */}
           <div className="py-8 border-b border-[#0A0A0A]/10">
-            <h3 className="text-xs font-mono tracking-widest uppercase font-bold text-[#656565] mb-6">
-              CAPACITÉS SPÉCIFIQUES DÉPLOYÉES
+            <h3 className="text-xs font-mono tracking-widest uppercase font-bold text-[#656565] mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#FF4A16]" />
+              <span>CAPACITÉS SPÉCIFIQUES DÉPLOYÉES</span>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {activePillar.capabilities.map((cap, cIdx) => (
-                <div key={cIdx} className="p-5 bg-[#FAF8F6] border border-[#0A0A0A]/10 rounded-[2px]">
+                <LiquidGlassCard
+                  key={cIdx}
+                  material="secondary"
+                  className="p-5"
+                >
                   <h4 className="font-bold text-sm text-[#0A0A0A] mb-2 uppercase">
                     {cap.title}
                   </h4>
@@ -131,7 +145,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </LiquidGlassCard>
               ))}
             </div>
           </div>
@@ -139,21 +153,21 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
           {/* Tech, Deliverables, Business Value Split */}
           <div className="pt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Tech Stack */}
-            <div className="p-5 bg-white border border-[#0A0A0A]/10 rounded-[2px]">
+            <LiquidGlassCard material="subtle" className="p-5">
               <div className="text-[10px] font-mono tracking-widest text-[#656565] uppercase font-bold mb-3">
                 STACK TECHNIQUE MAÎTRISÉE
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {activePillar.technologies.map((t) => (
-                  <span key={t} className="text-[10px] font-mono px-2 py-0.5 bg-[#FAF8F6] text-[#0A0A0A] border border-[#0A0A0A]/5">
+                  <span key={t} className="text-[10px] font-mono px-2 py-0.5 bg-white/70 text-[#0A0A0A] border border-black/5 rounded-[2px]">
                     {t}
                   </span>
                 ))}
               </div>
-            </div>
+            </LiquidGlassCard>
 
             {/* Deliverables */}
-            <div className="p-5 bg-white border border-[#0A0A0A]/10 rounded-[2px]">
+            <LiquidGlassCard material="subtle" className="p-5">
               <div className="text-[10px] font-mono tracking-widest text-[#656565] uppercase font-bold mb-3">
                 LIVRABLES FORMELS REMIS
               </div>
@@ -165,26 +179,28 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </LiquidGlassCard>
 
             {/* Business Impact */}
-            <div className="p-5 bg-white border-2 border-[#FF4A16]/30 text-[#0A0A0A] rounded-[2px] shadow-xs">
+            <LiquidGlassCard material="highlight" className="p-5 border-2 border-[#FF4A16]/40 text-[#0A0A0A]">
               <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-2 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16] animate-pulse" />
                 <span>RETOUR SUR INVESTISSEMENT</span>
               </div>
               <p className="text-xs text-[#333333] leading-relaxed font-medium">
                 {activePillar.businessValue}
               </p>
-            </div>
+            </LiquidGlassCard>
           </div>
-        </div>
+        </LiquidGlassCard>
 
         {/* Strategic Economic Model Section */}
         <div className="mt-20 pt-12 border-t border-[#0A0A0A]/10">
           <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0A0A0A]/10 text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-2">
-              VISION STRATÉGIQUE 2026
+            <div className="mb-2">
+              <LiquidGlassBadge variant="neutral" size="xs">
+                VISION STRATÉGIQUE 2026
+              </LiquidGlassBadge>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-[#0A0A0A] tracking-tight">
               MODÈLE ÉCONOMIQUE : SERVICES • PRODUITS • RÉCURRENCE
@@ -196,7 +212,11 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {ECONOMIC_MODEL.pillars.map((model) => (
-              <div key={model.type} className="p-6 bg-white border border-[#0A0A0A]/10 flex flex-col justify-between rounded-[2px]">
+              <LiquidGlassCard
+                key={model.type}
+                material="primary"
+                className="p-6 flex flex-col justify-between"
+              >
                 <div>
                   <div className="text-xs font-mono font-bold text-[#FF4A16] uppercase tracking-widest mb-1">
                     {model.type}
@@ -220,7 +240,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onNavigate }) => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>

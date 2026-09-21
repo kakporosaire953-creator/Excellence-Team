@@ -5,6 +5,9 @@ import { PROCESS_STEPS } from '../../data/process';
 import { TEAM_MEMBERS } from '../../data/team';
 import { TeamModal } from '../TeamModal';
 import { ETSymbol, ETBadge } from '../ETLogo';
+import { LiquidGlassCard } from '../glass/LiquidGlassCard';
+import { LiquidGlassBadge } from '../glass/LiquidGlassBadge';
+import { LiquidGlassButton } from '../glass/LiquidGlassButton';
 import {
   Shield,
   Sparkles,
@@ -51,11 +54,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
   });
 
   return (
-    <div id="about-page" className="w-full pt-28 pb-24 bg-[#FAF8F6]">
+    <div id="about-page" className="w-full pt-28 pb-24 bg-transparent relative z-10">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#0A0A0A]/10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0A0A0A]/10 text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-4">
-          HISTORIQUE, GOUVERNANCE & VISION
+        <div className="mb-4">
+          <LiquidGlassBadge variant="vermilion" size="sm">
+            HISTORIQUE, GOUVERNANCE & VISION
+          </LiquidGlassBadge>
         </div>
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0A0A0A] leading-tight uppercase">
           WHO WE ARE & HOW WE OPERATE<span className="text-[#FF4A16]">/</span>
@@ -87,13 +92,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-4 bg-white border-l-4 border-l-[#FF4A16] border border-[#0A0A0A]/10 text-xs text-[#333333] leading-relaxed rounded-[2px]">
+            <LiquidGlassCard material="highlight" className="p-5 border-l-4 border-l-[#FF4A16] text-xs text-[#333333] leading-relaxed">
               <strong>Le message qui nous définit :</strong> « Nous n’avons pas commencé comme une entreprise structurée. Nous sommes en train de la construire avec discipline, pour porter haut le flambeau de la tech africaine. »
-            </div>
+            </LiquidGlassCard>
           </div>
 
           {/* Right: Evolution Timeline */}
-          <div className="lg:col-span-6 bg-white border border-[#0A0A0A]/10 p-6 sm:p-8 space-y-6 rounded-[2px]">
+          <LiquidGlassCard material="primary" className="lg:col-span-6 p-6 sm:p-8 space-y-6">
             <div className="text-xs font-mono tracking-widest text-[#656565] uppercase font-bold border-b border-[#0A0A0A]/10 pb-3 flex items-center justify-between">
               <span>LES JALONS DE NOTRE CROISSANCE</span>
               <span className="text-[#FF4A16] font-mono">2024 — 2026+</span>
@@ -119,7 +124,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                 </div>
               ))}
             </div>
-          </div>
+          </LiquidGlassCard>
         </div>
 
         {/* 2026 Governance & Structure Section */}
@@ -139,7 +144,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Box 1: 6 Cofondateurs */}
-            <div className="p-6 bg-white border border-[#0A0A0A]/10 space-y-3 rounded-[2px]">
+            <LiquidGlassCard material="primary" className="p-6 space-y-3">
               <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold">
                 NOYAU STRATÉGIQUE
               </div>
@@ -152,10 +157,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
               <div className="pt-2 text-[11px] font-mono text-[#888888]">
                 Décisions majeures & validation collective
               </div>
-            </div>
+            </LiquidGlassCard>
 
             {/* Box 2: Direction Exécutive */}
-            <div className="p-6 bg-white border border-[#0A0A0A]/10 space-y-3 rounded-[2px]">
+            <LiquidGlassCard material="primary" className="p-6 space-y-3">
               <div className="text-[10px] font-mono tracking-widest text-[#0A0A0A] uppercase font-bold">
                 PILOTAGE OPÉRATIONNEL
               </div>
@@ -168,10 +173,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
               <div className="pt-2 text-[11px] font-mono text-[#888888]">
                 Coordination, arbitrages & KPI hebdomadaires
               </div>
-            </div>
+            </LiquidGlassCard>
 
             {/* Box 3: Membres Recrutés */}
-            <div className="p-6 bg-white border border-[#0A0A0A]/10 space-y-3 rounded-[2px]">
+            <LiquidGlassCard material="primary" className="p-6 space-y-3">
               <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold">
                 FORCE OPÉRATIONNELLE
               </div>
@@ -184,7 +189,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
               <div className="pt-2 text-[11px] font-mono text-[#888888]">
                 Fiches de poste, standards stricts & progression
               </div>
-            </div>
+            </LiquidGlassCard>
           </div>
         </div>
 
@@ -204,24 +209,24 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
             <div className="flex gap-2">
               <button
                 onClick={() => setTeamFilter('all')}
-                className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider border rounded-[2px] transition-colors cursor-pointer ${
-                  teamFilter === 'all' ? 'bg-[#0A0A0A] text-white border-[#0A0A0A]' : 'bg-white text-[#555555] border-[#0A0A0A]/10'
+                className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer ${
+                  teamFilter === 'all' ? 'bg-[#0A0A0A] text-white shadow-xs' : 'glass-secondary text-[#555555] border border-white/60'
                 }`}
               >
                 Tous (11)
               </button>
               <button
                 onClick={() => setTeamFilter('founders')}
-                className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider border rounded-[2px] transition-colors cursor-pointer ${
-                  teamFilter === 'founders' ? 'bg-[#0A0A0A] text-white border-[#0A0A0A]' : 'bg-white text-[#555555] border-[#0A0A0A]/10'
+                className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer ${
+                  teamFilter === 'founders' ? 'bg-[#0A0A0A] text-white shadow-xs' : 'glass-secondary text-[#555555] border border-white/60'
                 }`}
               >
                 Cofondateurs (6)
               </button>
               <button
                 onClick={() => setTeamFilter('recruited')}
-                className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider border rounded-[2px] transition-colors cursor-pointer ${
-                  teamFilter === 'recruited' ? 'bg-[#0A0A0A] text-white border-[#0A0A0A]' : 'bg-white text-[#555555] border-[#0A0A0A]/10'
+                className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer ${
+                  teamFilter === 'recruited' ? 'bg-[#0A0A0A] text-white shadow-xs' : 'glass-secondary text-[#555555] border border-white/60'
                 }`}
               >
                 Recrutés (5)
@@ -231,17 +236,17 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedMembers.map((member) => (
-              <div
+              <LiquidGlassCard
                 key={member.id}
-                className="bg-white border border-[#0A0A0A]/10 hover:border-[#0A0A0A] p-6 flex flex-col justify-between transition-all group rounded-[2px]"
+                material="primary"
+                interactive
+                className="p-6 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`text-[10px] font-mono tracking-widest uppercase font-bold px-2 py-0.5 ${
-                      member.isFounder ? 'bg-[#FF4A16] text-white' : 'bg-[#0A0A0A] text-white'
-                    }`}>
+                    <LiquidGlassBadge variant={member.isFounder ? 'vermilion' : 'neutral'} size="xs">
                       {member.status}
-                    </span>
+                    </LiquidGlassBadge>
                     <span className="text-[10px] font-mono text-[#656565] uppercase">
                       {member.department}
                     </span>
@@ -261,7 +266,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                 <div className="pt-4 border-t border-[#0A0A0A]/10 flex items-center justify-between">
                   <div className="flex flex-wrap gap-1">
                     {member.competencies.slice(0, 2).map((comp) => (
-                      <span key={comp} className="text-[9.5px] font-mono px-2 py-0.5 bg-[#FAF8F6] text-[#444444]">
+                      <span key={comp} className="text-[9.5px] font-mono px-2 py-0.5 bg-black/5 text-[#444444] rounded-[2px]">
                         {comp}
                       </span>
                     ))}
@@ -274,7 +279,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>
@@ -292,7 +297,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {VALUES.map((val) => (
-              <div key={val.name} className="p-6 bg-white border border-[#0A0A0A]/10 hover:border-[#0A0A0A] transition-all rounded-[2px]">
+              <LiquidGlassCard key={val.name} material="secondary" className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   {getValueIcon(val.iconName)}
                   <h3 className="font-bold text-base text-[#0A0A0A] uppercase tracking-wide">
@@ -305,7 +310,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                 <p className="text-xs text-[#555555] leading-relaxed">
                   {val.description}
                 </p>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>
@@ -323,20 +328,20 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {PROCESS_STEPS.slice(0, 4).map((step) => (
-              <div key={step.number} className="p-5 bg-white border border-[#0A0A0A]/10 rounded-[2px]">
+              <LiquidGlassCard key={step.number} material="subtle" className="p-5">
                 <span className="text-lg font-mono font-black text-[#FF4A16]">{step.number}</span>
                 <h4 className="font-bold text-sm text-[#0A0A0A] mt-1">{step.title}</h4>
                 <p className="text-xs text-[#555555] mt-1.5 leading-relaxed">{step.description}</p>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             {PROCESS_STEPS.slice(4).map((step) => (
-              <div key={step.number} className="p-5 bg-white border border-[#0A0A0A]/10 rounded-[2px]">
+              <LiquidGlassCard key={step.number} material="subtle" className="p-5">
                 <span className="text-lg font-mono font-black text-[#FF4A16]">{step.number}</span>
                 <h4 className="font-bold text-sm text-[#0A0A0A] mt-1">{step.title}</h4>
                 <p className="text-xs text-[#555555] mt-1.5 leading-relaxed">{step.description}</p>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>

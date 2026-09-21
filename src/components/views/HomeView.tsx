@@ -76,7 +76,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   const recruitedTalents = TEAM_MEMBERS.filter((m) => !m.isFounder);
 
   return (
-    <div className="w-full bg-[#FAF8F6] text-[#0A0A0A]">
+    <div className="w-full bg-transparent text-[#0A0A0A] relative z-10">
       {/* ========================================================
           SECTION 01 / HERO (MOMENT 1 SIGNATURE ENTRANCE)
           Choreographed staged reveal: Logo, Label, Typography, Text, CTAs, Mask Panel
@@ -273,14 +273,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
       {/* ========================================================
           SECTION 05 / OUR APPROACH
-          7-Step Engineering Rigor (Architectural Light Mode)
+          7-Step Engineering Rigor (Liquid Glass Architecture)
           ======================================================== */}
       <ScrollReveal>
         <section
           id="process-section"
-          className="py-20 sm:py-24 md:py-28 bg-white text-[#0A0A0A] border-b border-[#0A0A0A]/10"
+          className="py-20 sm:py-24 md:py-28 bg-transparent text-[#0A0A0A] border-b border-[#0A0A0A]/10 relative overflow-hidden"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mb-14">
               <div className="text-xs font-mono tracking-widest text-[#FF4A16] uppercase font-bold flex items-center gap-1.5 mb-2">
                 <span>05</span>
@@ -345,12 +345,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
       {/* ========================================================
           SECTION 06 / COMPANY STORY
-          From 2024 student collective to 2026 structured tech firm (Light Architectural Mode)
+          From 2024 student collective to 2026 structured tech firm
           ======================================================== */}
       <ScrollReveal>
         <section
           id="evolution-section"
-          className="py-20 sm:py-24 md:py-28 bg-[#FAF8F6] text-[#0A0A0A] border-b border-[#0A0A0A]/10 relative overflow-hidden"
+          className="py-20 sm:py-24 md:py-28 bg-transparent text-[#0A0A0A] border-b border-[#0A0A0A]/10 relative overflow-hidden"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mb-14">
@@ -368,26 +368,28 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="relative border-l-2 border-[#0A0A0A]/20 pl-6 sm:pl-8 space-y-10">
+            <div className="relative border-l-2 border-[#0A0A0A]/15 pl-6 sm:pl-8 space-y-6">
               {EVOLUTION_MILESTONES.map((milestone, idx) => (
                 <div key={idx} className="relative group">
-                  <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-[#0A0A0A] group-hover:border-[#FF4A16] group-hover:bg-[#FF4A16] transition-colors" />
+                  <div className="absolute -left-[31px] sm:-left-[39px] top-4 w-4 h-4 rounded-full bg-white border-2 border-[#0A0A0A] group-hover:border-[#FF4A16] group-hover:bg-[#FF4A16] transition-colors" />
 
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-xs font-mono font-bold text-[#FF4A16]">
-                      {milestone.year}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#666666] px-2 py-0.5 bg-black/5 rounded-[1px]">
-                      {milestone.phase}
-                    </span>
-                  </div>
+                  <LiquidGlassCard material="primary" className="p-5 sm:p-6 space-y-2">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono font-bold text-[#FF4A16]">
+                        {milestone.year}
+                      </span>
+                      <LiquidGlassBadge variant="neutral" size="xs">
+                        {milestone.phase}
+                      </LiquidGlassBadge>
+                    </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0A0A0A]">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#555555] leading-relaxed max-w-3xl mt-1">
-                    {milestone.description}
-                  </p>
+                    <h3 className="text-lg sm:text-xl font-bold text-[#0A0A0A]">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#555555] leading-relaxed max-w-3xl">
+                      {milestone.description}
+                    </p>
+                  </LiquidGlassCard>
                 </div>
               ))}
             </div>
@@ -403,7 +405,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
       <ScrollReveal>
         <section
           id="people-section"
-          className="py-20 sm:py-24 md:py-28 bg-[#FAF8F6] border-b border-[#0A0A0A]/10"
+          className="py-20 sm:py-24 md:py-28 bg-transparent border-b border-[#0A0A0A]/10 relative overflow-hidden"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-[#0A0A0A]/10 gap-6">
@@ -527,9 +529,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
       <ScrollReveal>
         <section
           id="journal-section"
-          className="py-20 sm:py-24 md:py-28 bg-white border-b border-[#0A0A0A]/10"
+          className="py-20 sm:py-24 md:py-28 bg-transparent border-b border-[#0A0A0A]/10 relative overflow-hidden"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-[#0A0A0A]/10 gap-6">
               <div>
                 <div className="text-xs font-mono tracking-widest text-[#FF4A16] uppercase font-bold flex items-center gap-1.5">
@@ -598,36 +600,39 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
       {/* ========================================================
           SECTION 09 / FINAL CTA
-          Sculpted Liquid Glass Chamber in signature Vermilion (#FF4A16)
+          Sculpted Liquid Glass Pavilion
           ======================================================== */}
       <ScrollReveal>
         <section
           id="final-cta-section"
-          className="py-24 md:py-32 bg-[#FF4A16] text-[#0A0A0A] text-center relative overflow-hidden shadow-2xl specular-top"
+          className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative z-10"
         >
-          {/* Specular hairline reflection */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/85 to-transparent"
-          />
+          <div className="max-w-5xl mx-auto glass-floating rounded-[32px] sm:rounded-[44px] p-8 sm:p-14 md:p-16 border border-white/90 shadow-[0_32px_70px_-15px_rgba(255,74,22,0.22),inset_0_2px_3px_rgba(255,255,255,1),inset_0_-1.5px_2px_rgba(0,0,0,0.06)] relative overflow-hidden text-center space-y-6">
+            {/* Specular Edge */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent"
+            />
+            {/* Ambient Vermilion Glow in top corner of CTA glass */}
+            <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#FF4A16]/20 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[#FF4A16]/15 blur-3xl pointer-events-none" />
 
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0A0A0A] text-white text-[11px] font-mono tracking-widest uppercase rounded-[2px] shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0A0A0A] text-white text-[11px] font-mono tracking-widest uppercase rounded-full shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16] animate-pulse" />
               ENGAGEMENT PROFESSIONNEL & DISCIPLINE
             </div>
 
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0A0A0A] tracking-tight leading-tight uppercase">
-              LET’S BUILD SOMETHING REAL<span className="text-white">/</span>
+              LET’S BUILD SOMETHING REAL<span className="text-[#FF4A16]">/</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-[#0A0A0A]/90 font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-[#444444] font-medium max-w-2xl mx-auto leading-relaxed">
               Vous avez un projet ambitieux, un système critique à auditer ou un besoin d’ingénierie logicielle ? Collaborons avec rigueur et méthode.
             </p>
 
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
               <LiquidGlassButton
-                variant="dark"
+                variant="vermilion"
                 size="lg"
                 onClick={() => onNavigate('contact')}
                 icon={<ArrowRight className="w-4 h-4" />}
@@ -644,7 +649,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               </LiquidGlassButton>
             </div>
 
-            <div className="pt-8 text-xs font-mono text-[#0A0A0A]/80 font-semibold">
+            <div className="pt-6 text-xs font-mono text-[#666666] font-semibold border-t border-[#0A0A0A]/10 max-w-md mx-auto">
               Cotonou, Bénin • contact@excellenceteam.site • Réponse sous 24h ouvrées
             </div>
           </div>

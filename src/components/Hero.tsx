@@ -147,8 +147,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
 
           {/* ========================================================
-              STEP 6: LA GRANDE ZONE ROUGE-ORANGE (#FF4A16)
-              Sculpted Liquid Glass Core Spec Console with optical depth
+              STEP 6: SCULPTED LIQUID GLASS CORE CONSOLE
+              Physical frosted glass pane with 32px blur, double-bevel edge,
+              live obsidian terminal, and tactile metric tiles
               ======================================================== */}
           <motion.div
             initial={
@@ -167,31 +168,43 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             }}
             className="lg:col-span-5"
           >
-            {/* The Sculpted Liquid Glass Chamber */}
-            <div className="relative bg-[#FF4A16] text-[#0A0A0A] p-6 sm:p-7 md:p-8 rounded-[4px] shadow-[0_24px_60px_-15px_rgba(255,74,22,0.35),inset_0_1px_2px_rgba(255,255,255,0.45)] border border-[#FF4A16]/50 overflow-hidden flex flex-col justify-between space-y-6">
+            {/* The Sculpted Liquid Glass Slab */}
+            <div className="relative glass-floating rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 md:p-9 border border-white/80 shadow-[0_28px_60px_-15px_rgba(40,30,20,0.18),inset_0_2px_3px_rgba(255,255,255,1),inset_0_-1.5px_2px_rgba(0,0,0,0.06)] overflow-hidden space-y-6">
               {/* Internal Specular Edge */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent"
               />
 
-              {/* Architectural header inside red-orange */}
-              <div className="flex items-center justify-between border-b border-[#0A0A0A]/20 pb-4">
+              {/* Architectural header */}
+              <div className="flex items-center justify-between border-b border-[#0A0A0A]/10 pb-4">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 bg-[#0A0A0A] text-white text-[10px] font-mono tracking-widest uppercase font-bold rounded-[2px] shadow-xs">
-                    SYSTEM SPEC
+                  <span className="px-2.5 py-0.5 bg-[#0A0A0A] text-white text-[10px] font-mono tracking-widest uppercase font-bold rounded-full shadow-xs flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16] animate-pulse" />
+                    <span>EXCELLENCE TEAM</span>
                   </span>
                   <span className="text-xs font-mono font-bold text-[#0A0A0A] tracking-wider">
-                    CORE.INFRA
+                    DISCIPLINE 2026
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-[#0A0A0A]/85 font-bold">
-                  ORG.ET-2026
+                <span className="text-[11px] font-mono text-[#666666] font-semibold">
+                  COTONOU // BÉNIN
                 </span>
               </div>
 
+              {/* Central Masterclass Statement */}
+              <div className="space-y-1">
+                <h3 className="text-2xl sm:text-3xl font-black text-[#0A0A0A] tracking-tight uppercase leading-[1.1]">
+                  KEEP PUSHING <br />
+                  <span className="text-[#FF4A16]">FORWARD!</span>
+                </h3>
+                <p className="text-xs sm:text-sm text-[#555555] font-medium leading-relaxed">
+                  « It's as easy as turning on a light. »
+                </p>
+              </div>
+
               {/* Smoked Obsidian Glass Terminal Box */}
-              <div className="glass-deep text-white p-4 sm:p-5 rounded-[3px] border border-white/15 font-mono text-xs space-y-3 relative overflow-hidden">
+              <div className="glass-deep text-white p-4 sm:p-5 rounded-[20px] border border-white/20 font-mono text-xs space-y-3 relative overflow-hidden shadow-lg">
                 <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FF4A16] shadow-[0_0_8px_#FF4A16]" />
@@ -218,19 +231,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* 4 Optical Glass Metrics Tiles */}
-              <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
-                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
-                    COLLECTIF STRUCTURÉ
+              {/* 4 Optical Frosted Glass Metrics Tiles */}
+              <div className="grid grid-cols-2 gap-3 pt-1 text-xs">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
+                    COLLECTIF
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
                     11 Talents
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     DIRECTION
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -238,8 +251,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     EXPANSION
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -247,8 +260,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
+                <div className="p-3.5 bg-white/45 backdrop-blur-md border border-white/70 rounded-[18px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#666666] font-bold">
                     EXIGENCE
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -258,7 +271,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               </div>
 
               {/* Bottom Signature Bar */}
-              <div className="pt-3 border-t border-[#0A0A0A]/20 flex items-center justify-between text-xs font-mono">
+              <div className="pt-3 border-t border-[#0A0A0A]/10 flex items-center justify-between text-xs font-mono">
                 <span className="font-bold tracking-tight text-[#0A0A0A] uppercase">
                   TECHNOLOGY BUILT WITH DISCIPLINE.
                 </span>

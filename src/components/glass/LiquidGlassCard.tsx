@@ -63,16 +63,22 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
       id={id}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden transition-all duration-300 rounded-[3px] ${materialClassMap[material]} ${
-        interactive ? 'cursor-pointer hover:-translate-y-0.5 group' : ''
+      className={`relative overflow-hidden transition-all duration-300 rounded-[24px] sm:rounded-[28px] ${materialClassMap[material]} ${
+        interactive ? 'cursor-pointer hover:-translate-y-1 hover:shadow-2xl group' : ''
       } ${className}`}
       {...props}
     >
+      {/* Double Bevel Physical Glass Edge */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-[24px] sm:rounded-[28px] border border-white/60 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.9),inset_0_-1.5px_2px_rgba(0,0,0,0.06)] z-10"
+      />
+
       {/* Specular hairline top reflection */}
       {specularEdge && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[1px] z-10"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] z-10"
           style={{
             background:
               material === 'deep'

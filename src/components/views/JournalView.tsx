@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { PageView, JournalArticle } from '../../types';
 import { JOURNAL_ARTICLES } from '../../data/journal';
+import { LiquidGlassCard } from '../glass/LiquidGlassCard';
+import { LiquidGlassBadge } from '../glass/LiquidGlassBadge';
 import { ArrowRight, ArrowLeft, Clock, Calendar, Share2, Check, BookOpen } from 'lucide-react';
 
 interface JournalViewProps {
@@ -25,11 +27,13 @@ export const JournalView: React.FC<JournalViewProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div id="journal-page" className="w-full pt-28 pb-24 bg-[#FAF8F6]">
+    <div id="journal-page" className="w-full pt-28 pb-24 bg-transparent relative z-10">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#0A0A0A]/10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0A0A0A]/10 text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-4">
-          JOURNAL TECHNIQUE & NOTES D'INGÉNIERIE
+        <div className="mb-4">
+          <LiquidGlassBadge variant="vermilion" size="sm">
+            JOURNAL TECHNIQUE & NOTES D'INGÉNIERIE
+          </LiquidGlassBadge>
         </div>
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0A0A0A] leading-tight uppercase">
           BUILD. BREAK. LEARN. PUBLISH<span className="text-[#FF4A16]">/</span>
@@ -44,10 +48,10 @@ export const JournalView: React.FC<JournalViewProps> = ({ onNavigate }) => {
             <button
               key={cat}
               onClick={() => setCategoryFilter(cat)}
-              className={`px-4 py-2 text-xs font-bold tracking-wider uppercase transition-all cursor-pointer border rounded-[2px] ${
+              className={`px-4 py-2 text-xs font-bold tracking-wider uppercase transition-all cursor-pointer rounded-full ${
                 categoryFilter === cat
-                  ? 'bg-[#0A0A0A] text-white border-[#0A0A0A] shadow-xs'
-                  : 'bg-white text-[#555555] border-[#0A0A0A]/10 hover:border-[#0A0A0A]/30'
+                  ? 'bg-[#0A0A0A] text-white shadow-xs'
+                  : 'glass-secondary text-[#555555] hover:text-[#0A0A0A] border border-white/60'
               }`}
             >
               {cat === 'All' ? 'Tous les Articles' : cat}
@@ -60,7 +64,7 @@ export const JournalView: React.FC<JournalViewProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         {activeArticle ? (
           /* Full Article Reader View */
-          <article className="max-w-3xl mx-auto bg-white border border-[#0A0A0A]/10 p-6 sm:p-10 shadow-xs rounded-[2px] animate-in fade-in duration-200">
+          <LiquidGlassCard material="highlight" className="max-w-3xl mx-auto p-6 sm:p-10 shadow-xl">
             <button
               onClick={() => setActiveArticle(null)}
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#656565] hover:text-[#0A0A0A] mb-8 cursor-pointer"
@@ -71,9 +75,9 @@ export const JournalView: React.FC<JournalViewProps> = ({ onNavigate }) => {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold px-2 py-0.5 bg-[#FF4A16]/10">
+                <LiquidGlassBadge variant="vermilion" size="xs">
                   {activeArticle.category}
-                </span>
+                </LiquidGlassBadge>
                 <span className="text-xs font-mono text-[#656565] flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   {activeArticle.date}
@@ -128,21 +132,23 @@ export const JournalView: React.FC<JournalViewProps> = ({ onNavigate }) => {
                 </button>
               </div>
             </div>
-          </article>
+          </LiquidGlassCard>
         ) : (
           /* Articles Grid */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredArticles.map((article) => (
-              <div
+              <LiquidGlassCard
                 key={article.id}
+                material="primary"
+                interactive
                 onClick={() => setActiveArticle(article)}
-                className="bg-white border border-[#0A0A0A]/10 hover:border-[#FF4A16] transition-all p-6 sm:p-7 flex flex-col justify-between cursor-pointer group shadow-2xs rounded-[2px]"
+                className="p-6 sm:p-7 flex flex-col justify-between cursor-pointer group"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono text-[#656565] mb-3">
-                    <span className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold px-2 py-0.5 bg-[#FF4A16]/10">
+                    <LiquidGlassBadge variant="vermilion" size="xs">
                       {article.category}
-                    </span>
+                    </LiquidGlassBadge>
                     <span>{article.readTime}</span>
                   </div>
 
@@ -164,7 +170,7 @@ export const JournalView: React.FC<JournalViewProps> = ({ onNavigate }) => {
                     LIRE <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
         )}

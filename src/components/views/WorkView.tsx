@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { PageView, Project, ProjectCategory } from '../../types';
 import { PROJECTS } from '../../data/projects';
 import { ProjectModal } from '../ProjectModal';
+import { LiquidGlassCard } from '../glass/LiquidGlassCard';
+import { LiquidGlassBadge } from '../glass/LiquidGlassBadge';
+import { LiquidGlassButton } from '../glass/LiquidGlassButton';
 import { ArrowUpRight, ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface WorkViewProps {
@@ -27,11 +30,13 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
     : PROJECTS.filter((p) => p.category === activeCategory);
 
   return (
-    <div id="work-page" className="w-full pt-28 pb-24 bg-[#FAF8F6]">
+    <div id="work-page" className="w-full pt-28 pb-24 bg-transparent relative z-10">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#0A0A0A]/10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0A0A0A]/10 text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-4">
-          PORTFOLIO D’INGÉNIERIE & ÉTUDES DE CAS
+        <div className="mb-4">
+          <LiquidGlassBadge variant="vermilion" size="sm">
+            PORTFOLIO D’INGÉNIERIE & ÉTUDES DE CAS
+          </LiquidGlassBadge>
         </div>
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0A0A0A] leading-tight uppercase">
           BUILT. NOT PROMISED<span className="text-[#FF4A16]">/</span>
@@ -46,10 +51,10 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 text-xs font-bold tracking-wider uppercase transition-all cursor-pointer border rounded-[2px] ${
+              className={`px-4 py-2 text-xs font-bold tracking-wider uppercase transition-all cursor-pointer rounded-full ${
                 activeCategory === cat
-                  ? 'bg-[#0A0A0A] text-white border-[#0A0A0A] shadow-xs'
-                  : 'bg-white text-[#555555] border-[#0A0A0A]/10 hover:border-[#0A0A0A]/30'
+                  ? 'bg-[#0A0A0A] text-white shadow-md'
+                  : 'glass-secondary text-[#555555] hover:text-[#0A0A0A] border border-white/60'
               }`}
             >
               {cat === 'All' ? 'Tous les Projets (12)' : cat}
@@ -62,25 +67,24 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
-            <div
+            <LiquidGlassCard
               key={project.id}
-              className={`bg-white border transition-all flex flex-col justify-between group rounded-[2px] ${
-                project.featured
-                  ? 'border-[#0A0A0A]/20 shadow-xs'
-                  : 'border-[#0A0A0A]/10 hover:border-[#0A0A0A]/40'
-              }`}
+              material={project.featured ? 'highlight' : 'primary'}
+              interactive
+              onClick={() => setSelectedProject(project)}
+              className="p-6 sm:p-7 flex flex-col justify-between group cursor-pointer"
             >
-              <div className="p-6 sm:p-7 space-y-4">
+              <div className="space-y-4">
                 {/* Meta header */}
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold px-2 py-0.5 bg-[#FF4A16]/10">
+                  <LiquidGlassBadge variant="vermilion" size="xs">
                     {project.category}
-                  </span>
+                  </LiquidGlassBadge>
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-mono text-[#656565]">
                       {project.year}
                     </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 bg-[#0A0A0A] text-white font-semibold">
+                    <span className="text-[10px] font-mono px-2 py-0.5 bg-[#0A0A0A] text-white font-semibold rounded-[2px]">
                       {project.status}
                     </span>
                   </div>
@@ -97,7 +101,7 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
                 </p>
 
                 {/* Problem snippet */}
-                <div className="p-3 bg-[#FAF8F6] border-l-2 border-l-[#0A0A0A] text-xs text-[#444444] space-y-1">
+                <div className="p-3 bg-black/5 rounded-xl border-l-2 border-l-[#FF4A16] text-xs text-[#444444] space-y-1">
                   <div className="text-[9.5px] font-mono font-bold uppercase text-[#656565]">
                     Problématique :
                   </div>
@@ -109,7 +113,7 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
                   {project.technology.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="text-[9.5px] font-mono px-2 py-0.5 bg-[#FAF8F6] text-[#0A0A0A] border border-[#0A0A0A]/5"
+                      className="text-[9.5px] font-mono px-2 py-0.5 bg-white/70 text-[#0A0A0A] border border-black/5 rounded-[2px]"
                     >
                       {tech}
                     </span>
@@ -123,33 +127,34 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
               </div>
 
               {/* Card Footer Actions */}
-              <div className="p-6 pt-0 border-t border-[#0A0A0A]/5 mt-4 flex items-center justify-between">
-                <button
-                  onClick={() => setSelectedProject(project)}
-                  className="text-xs font-bold text-[#0A0A0A] group-hover:text-[#FF4A16] flex items-center gap-1 uppercase tracking-wider cursor-pointer"
-                >
+              <div className="pt-4 border-t border-[#0A0A0A]/10 mt-4 flex items-center justify-between">
+                <span className="text-xs font-bold text-[#0A0A0A] group-hover:text-[#FF4A16] flex items-center gap-1 uppercase tracking-wider">
                   <span>ÉTUDE DE CAS COMPLÈTE</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
+                </span>
 
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1 text-[#656565] hover:text-[#0A0A0A]"
+                    onClick={(e) => e.stopPropagation()}
+                    className="p-1 text-[#656565] hover:text-[#FF4A16] transition-colors"
                     aria-label="Accéder au lien du projet"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 )}
               </div>
-            </div>
+            </LiquidGlassCard>
           ))}
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-16 p-8 bg-white border-2 border-[#0A0A0A]/15 text-[#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-6 rounded-[2px] shadow-sm">
+        <LiquidGlassCard
+          material="highlight"
+          className="mt-16 p-8 text-[#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl"
+        >
           <div>
             <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-1">
               CONSULTATION D'INGÉNIERIE /
@@ -161,13 +166,14 @@ export const WorkView: React.FC<WorkViewProps> = ({ onNavigate }) => {
               Nos ingénieurs et directeurs de projets évaluent votre besoin et conçoivent une architecture adaptée.
             </p>
           </div>
-          <button
+          <LiquidGlassButton
+            variant="vermilion"
+            size="md"
             onClick={() => onNavigate('contact')}
-            className="px-6 py-3.5 bg-[#FF4A16] hover:bg-[#E03F0E] text-white font-bold text-xs tracking-wider uppercase transition-colors shrink-0 cursor-pointer rounded-[2px] shadow-sm"
           >
             LANCER UNE ÉTUDE TECHNIQUE
-          </button>
-        </div>
+          </LiquidGlassButton>
+        </LiquidGlassCard>
       </div>
 
       <ProjectModal
