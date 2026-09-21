@@ -2,6 +2,9 @@ import React from 'react';
 import { PageView } from '../../types';
 import { BRAND } from '../../data/brand';
 import { ContactForm } from '../ContactForm';
+import { LiquidGlassCard } from '../glass/LiquidGlassCard';
+import { LiquidGlassBadge } from '../glass/LiquidGlassBadge';
+import { OpticalCaustic } from '../glass/OpticalCaustic';
 import { MapPin, Mail, Clock, Shield, CheckCircle2, MessageSquare, Terminal } from 'lucide-react';
 
 interface ContactViewProps {
@@ -10,11 +13,16 @@ interface ContactViewProps {
 
 export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
   return (
-    <div id="contact-page" className="w-full pt-28 pb-24 bg-[#FAF8F6]">
+    <div id="contact-page" className="w-full pt-28 pb-24 bg-transparent relative overflow-hidden">
+      <OpticalCaustic intensity="medium" position="top-right" />
+      <OpticalCaustic intensity="subtle" position="bottom-left" />
+
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#0A0A0A]/10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0A0A0A]/10 text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold mb-4">
-          ENGAGEMENT COMMERCIAL & ÉVALUATION TECHNIQUE
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#0A0A0A]/10 relative z-10">
+        <div className="mb-4">
+          <LiquidGlassBadge variant="vermilion" size="sm" indicator>
+            ENGAGEMENT COMMERCIAL & ÉVALUATION TECHNIQUE
+          </LiquidGlassBadge>
         </div>
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0A0A0A] leading-tight uppercase">
           LET’S BUILD SOMETHING REAL<span className="text-[#FF4A16]">/</span>
@@ -25,7 +33,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
       </div>
 
       {/* Main Form & Info Split */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Form Column (7 cols) */}
           <div className="lg:col-span-7">
@@ -35,9 +43,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
           {/* Details & SLA Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Coordinates Card */}
-            <div className="p-6 sm:p-8 bg-white border border-[#0A0A0A]/10 space-y-6 rounded-[2px]">
-              <div className="text-xs font-mono tracking-widest text-[#FF4A16] uppercase font-bold border-b border-[#0A0A0A]/10 pb-3">
-                COORDONNÉES OFFICIELLES
+            <LiquidGlassCard material="primary" className="p-6 sm:p-8 space-y-6">
+              <div className="text-xs font-mono tracking-widest text-[#FF4A16] uppercase font-bold border-b border-[#0A0A0A]/10 pb-3 flex items-center justify-between">
+                <span>COORDONNÉES OFFICIELLES</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16]" />
               </div>
 
               <div className="space-y-4">
@@ -83,12 +92,13 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </LiquidGlassCard>
 
             {/* SLA & Engagement Principles */}
-            <div className="p-6 bg-white border-2 border-[#0A0A0A]/15 text-[#0A0A0A] space-y-4 rounded-[2px] shadow-xs">
-              <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold">
-                ENGAGEMENT DE TRANSPARENCE
+            <LiquidGlassCard material="highlight" className="p-6 sm:p-8 space-y-4">
+              <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16]" />
+                <span>ENGAGEMENT DE TRANSPARENCE</span>
               </div>
               <h3 className="text-lg font-black text-[#0A0A0A]">
                 Pas d'estimations à l'aveugle.
@@ -111,7 +121,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   <span>Propriété intellectuelle totale cédée au client</span>
                 </div>
               </div>
-            </div>
+            </LiquidGlassCard>
           </div>
         </div>
       </div>

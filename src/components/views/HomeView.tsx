@@ -11,6 +11,11 @@ import { Hero } from '../Hero';
 import { HomeProjectCarousel } from '../HomeProjectCarousel';
 import { RedSignal, LivingGrid, ScrollReveal } from '../motion/MotionPrimitives';
 import { AnimatedNumber } from '../motion/AnimatedNumber';
+import { LiquidGlassCard } from '../glass/LiquidGlassCard';
+import { LiquidGlassBadge } from '../glass/LiquidGlassBadge';
+import { LiquidGlassButton } from '../glass/LiquidGlassButton';
+import { PrismaticGlassBar } from '../glass/PrismaticGlassBar';
+import { OpticalCaustic } from '../glass/OpticalCaustic';
 import { ProjectModal } from '../ProjectModal';
 import { TeamModal } from '../TeamModal';
 import {
@@ -81,13 +86,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
       {/* ========================================================
           SECTION 02 / MANIFESTO
           "WE BUILD. WE SECURE. WE DELIVER."
-          Editorial text humanizing the brand
+          Editorial text humanizing the brand with Liquid Glass
           ======================================================== */}
       <ScrollReveal>
         <section
           id="manifesto-section"
-          className="py-20 sm:py-24 md:py-28 bg-white border-b border-[#0A0A0A]/10 relative overflow-hidden"
+          className="py-20 sm:py-24 md:py-28 bg-transparent border-b border-[#0A0A0A]/10 relative overflow-hidden"
         >
+          <OpticalCaustic intensity="subtle" position="top-right" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Left Col: Manifesto Title (5 cols) */}
@@ -102,7 +108,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                   WE SECURE. <br />
                   WE DELIVER<RedSignal type="slash" />
                 </h2>
-                <p className="text-sm text-[#656565] leading-relaxed pt-2">
+                <p className="text-sm text-[#555555] leading-relaxed pt-2">
                   Nous ne croyons ni aux promesses sans code, ni aux prototypes qui ne rencontrent jamais les exigences du réel. Excellence Team a été créée pour concevoir des logiciels sans concession, auditer les infrastructures critiques et démontrer que l'ingénierie africaine peut rivaliser avec les standards mondiaux les plus stricts.
                 </p>
                 <div className="pt-2">
@@ -118,23 +124,27 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
               {/* Right Col: Editorial Values Matrix (7 cols) */}
               <div className="lg:col-span-7 space-y-6">
-                {/* Engagement Opérationnel: Crisp Architectural Card */}
-                <div className="p-6 sm:p-7 bg-white text-[#0A0A0A] border-2 border-[#0A0A0A]/20 space-y-3 rounded-[2px] shadow-sm">
-                  <div className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16]" />
-                    <span>ENGAGEMENT OPÉRATIONNEL</span>
+                {/* Engagement Opérationnel: Liquid Glass Highlight Card */}
+                <LiquidGlassCard material="highlight" className="p-6 sm:p-7 space-y-3">
+                  <div className="flex items-center justify-between border-b border-[#0A0A0A]/10 pb-2.5">
+                    <LiquidGlassBadge variant="vermilion" size="xs" indicator>
+                      ENGAGEMENT OPÉRATIONNEL
+                    </LiquidGlassBadge>
+                    <span className="text-[10px] font-mono text-[#666666]">SLA CONTRACTUEL</span>
                   </div>
                   <p className="text-base sm:text-lg font-bold text-[#0A0A0A] leading-snug">
                     « Chaque livrable doit fonctionner sous la charge, résister aux vecteurs d'attaque courants et créer une valeur économique mesurable pour le commanditaire. »
                   </p>
-                </div>
+                </LiquidGlassCard>
 
                 {/* 6 Pillars in asymmetric list */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {VALUES.map((val) => (
-                    <div
+                    <LiquidGlassCard
                       key={val.name}
-                      className="p-5 bg-white border border-[#0A0A0A]/10 hover:border-[#FF4A16] transition-colors rounded-[2px]"
+                      material="primary"
+                      interactive
+                      className="p-5"
                     >
                       <div className="flex items-center gap-2.5 mb-2">
                         {getValueIcon(val.iconName)}
@@ -148,7 +158,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                       <p className="text-xs text-[#555555] leading-relaxed">
                         {val.description}
                       </p>
-                    </div>
+                    </LiquidGlassCard>
                   ))}
                 </div>
               </div>
@@ -159,16 +169,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
       {/* ========================================================
           SECTION 03 / CAPABILITIES
-          Editorial composition:
-          01 DIGITAL PRODUCTS, 02 AI & DATA, 03 CYBERSECURITY,
-          04 CLOUD & ENGINEERING, 05 AUTOMATION
+          Editorial composition with Liquid Glass cards
           ======================================================== */}
       <ScrollReveal>
         <section
           id="capabilities-section"
-          className="py-20 sm:py-24 md:py-28 bg-[#FAF8F6] border-b border-[#0A0A0A]/10"
+          className="py-20 sm:py-24 md:py-28 bg-transparent border-b border-[#0A0A0A]/10 relative overflow-hidden"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <OpticalCaustic intensity="subtle" position="bottom-left" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-[#0A0A0A]/10 gap-6">
               <div>
                 <div className="text-xs font-mono tracking-widest text-[#FF4A16] uppercase font-bold flex items-center gap-1.5">
@@ -189,12 +198,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               </button>
             </div>
 
-            {/* Editorial Modular Cards */}
+            {/* Editorial Modular Liquid Glass Cards */}
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {SERVICE_PILLARS.map((pillar, idx) => (
-                <div
+                <LiquidGlassCard
                   key={pillar.id}
-                  className={`p-6 sm:p-7 bg-white border border-[#0A0A0A]/10 flex flex-col justify-between group hover:border-[#0A0A0A] transition-all rounded-[2px] ${
+                  material="primary"
+                  interactive
+                  className={`p-6 sm:p-7 flex flex-col justify-between ${
                     idx === 0 ? 'md:col-span-2 lg:col-span-2' : ''
                   }`}
                 >
@@ -230,7 +241,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                   <div className="pt-6 mt-6 border-t border-[#0A0A0A]/10 flex items-center justify-between">
                     <div className="flex flex-wrap gap-1.5">
                       {pillar.technologies.slice(0, 3).map((tech) => (
-                        <span key={tech} className="text-[9.5px] font-mono px-2 py-0.5 bg-[#FAF8F6] text-[#555555] border border-[#0A0A0A]/5">
+                        <span key={tech} className="text-[9.5px] font-mono px-2 py-0.5 bg-white/60 text-[#555555] border border-white/80 rounded-[1px]">
                           {tech}
                         </span>
                       ))}
@@ -243,7 +254,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                     </button>
                   </div>
-                </div>
+                </LiquidGlassCard>
               ))}
             </div>
           </div>
@@ -287,22 +298,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {PROCESS_STEPS.map((step, idx) => (
-                <div
+                <LiquidGlassCard
                   key={step.number}
-                  className={`p-6 border ${
-                    idx === 0
-                      ? 'border-[#FF4A16] bg-[#FF4A16]/5'
-                      : 'border-[#0A0A0A]/10 bg-[#FAF8F6] hover:border-[#FF4A16]'
-                  } transition-all flex flex-col justify-between rounded-[2px]`}
+                  material={idx === 0 ? 'highlight' : 'primary'}
+                  className="p-6 transition-all flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-xl font-mono font-black text-[#FF4A16]">
                         <AnimatedNumber value={step.number} duration={1} />
                       </span>
-                      <span className="text-[10px] font-mono text-[#666666] uppercase tracking-widest">
+                      <LiquidGlassBadge variant={idx === 0 ? 'vermilion' : 'neutral'} size="xs">
                         PHASE
-                      </span>
+                      </LiquidGlassBadge>
                     </div>
 
                     <h3 className="text-lg font-bold text-[#0A0A0A] tracking-wide uppercase">
@@ -328,7 +336,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </LiquidGlassCard>
               ))}
             </div>
           </div>
@@ -430,15 +438,17 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {founders.map((member) => (
-                  <div
+                  <LiquidGlassCard
                     key={member.id}
-                    className="bg-white border border-[#0A0A0A]/10 hover:border-[#0A0A0A] p-6 flex flex-col justify-between transition-all group rounded-[2px]"
+                    material="primary"
+                    interactive
+                    className="p-6 flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-mono tracking-widest uppercase font-bold px-2 py-0.5 bg-[#FF4A16] text-white">
+                        <LiquidGlassBadge variant="vermilion" size="xs">
                           {member.status}
-                        </span>
+                        </LiquidGlassBadge>
                         <span className="text-[10px] font-mono text-[#656565] uppercase">
                           {member.department}
                         </span>
@@ -459,7 +469,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                     <div className="pt-4 border-t border-[#0A0A0A]/10 flex items-center justify-between">
                       <div className="flex flex-wrap gap-1">
                         {member.competencies.slice(0, 2).map((comp) => (
-                          <span key={comp} className="text-[9.5px] font-mono px-2 py-0.5 bg-[#FAF8F6] text-[#444444]">
+                          <span key={comp} className="text-[9.5px] font-mono px-2 py-0.5 bg-white/70 text-[#444444] border border-white/80 rounded-[1px]">
                             {comp}
                           </span>
                         ))}
@@ -472,7 +482,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                  </div>
+                  </LiquidGlassCard>
                 ))}
               </div>
             </div>
@@ -486,10 +496,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 {recruitedTalents.map((member) => (
-                  <div
+                  <LiquidGlassCard
                     key={member.id}
+                    material="secondary"
+                    interactive
                     onClick={() => setSelectedMember(member)}
-                    className="p-4 bg-white border border-[#0A0A0A]/10 hover:border-[#FF4A16] transition-all cursor-pointer group rounded-[2px]"
+                    className="p-4"
                   >
                     <div className="text-[9px] font-mono text-[#FF4A16] uppercase font-bold mb-1">
                       {member.department}
@@ -500,7 +512,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                     <p className="text-[11px] text-[#656565] mt-0.5 line-clamp-1">
                       {member.role}
                     </p>
-                  </div>
+                  </LiquidGlassCard>
                 ))}
               </div>
             </div>
@@ -540,16 +552,18 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               {JOURNAL_ARTICLES.slice(0, 2).map((article) => (
-                <div
+                <LiquidGlassCard
                   key={article.id}
+                  material="primary"
+                  interactive
                   onClick={() => onNavigate('journal')}
-                  className="p-6 sm:p-8 bg-[#FAF8F6] border border-[#0A0A0A]/10 hover:border-[#FF4A16] transition-all cursor-pointer group flex flex-col justify-between rounded-[2px]"
+                  className="p-6 sm:p-8 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[10px] font-mono tracking-widest text-[#FF4A16] uppercase font-bold px-2 py-0.5 bg-white border border-[#0A0A0A]/10">
+                      <LiquidGlassBadge variant="vermilion" size="xs">
                         {article.category}
-                      </span>
+                      </LiquidGlassBadge>
                       <span className="text-xs font-mono text-[#656565]">
                         {article.date}
                       </span>
@@ -575,7 +589,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                       LIRE L'ESSAI <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
-                </div>
+                </LiquidGlassCard>
               ))}
             </div>
           </div>
@@ -584,17 +598,22 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
       {/* ========================================================
           SECTION 09 / FINAL CTA
-          "LET'S BUILD SOMETHING REAL."
-          Grand bloc rouge-orange avec typographie noire/blanche
+          Sculpted Liquid Glass Chamber in signature Vermilion (#FF4A16)
           ======================================================== */}
       <ScrollReveal>
         <section
           id="final-cta-section"
-          className="py-24 md:py-32 bg-[#FF4A16] text-[#0A0A0A] text-center relative overflow-hidden shadow-2xl"
+          className="py-24 md:py-32 bg-[#FF4A16] text-[#0A0A0A] text-center relative overflow-hidden shadow-2xl specular-top"
         >
+          {/* Specular hairline reflection */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/85 to-transparent"
+          />
+
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0A0A0A] text-white text-[11px] font-mono tracking-widest uppercase rounded-[2px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0A0A0A] text-white text-[11px] font-mono tracking-widest uppercase rounded-[2px] shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16] animate-pulse" />
               ENGAGEMENT PROFESSIONNEL & DISCIPLINE
             </div>
 
@@ -607,23 +626,25 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             </p>
 
             <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
-              <button
+              <LiquidGlassButton
+                variant="dark"
+                size="lg"
                 onClick={() => onNavigate('contact')}
-                className="px-8 py-4 bg-[#0A0A0A] hover:bg-[#222222] text-white font-bold text-xs tracking-widest uppercase transition-all duration-200 cursor-pointer shadow-xl flex items-center gap-2 group active:scale-[0.98] rounded-[2px]"
+                icon={<ArrowRight className="w-4 h-4" />}
               >
-                <span>DÉMARRER UN PROJET AVEC NOUS</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
+                DÉMARRER UN PROJET AVEC NOUS
+              </LiquidGlassButton>
 
-              <button
+              <LiquidGlassButton
+                variant="secondary"
+                size="lg"
                 onClick={() => onNavigate('services')}
-                className="px-8 py-4 bg-transparent hover:bg-black/10 text-[#0A0A0A] border-2 border-[#0A0A0A] font-bold text-xs tracking-widest uppercase transition-all duration-200 cursor-pointer rounded-[2px]"
               >
                 DÉCOUVRIR NOS OFFRES & CAPACITÉS
-              </button>
+              </LiquidGlassButton>
             </div>
 
-            <div className="pt-8 text-xs font-mono text-[#0A0A0A]/70 font-semibold">
+            <div className="pt-8 text-xs font-mono text-[#0A0A0A]/80 font-semibold">
               Cotonou, Bénin • contact@excellenceteam.site • Réponse sous 24h ouvrées
             </div>
           </div>

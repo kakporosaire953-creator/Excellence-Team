@@ -2,6 +2,8 @@ import React from 'react';
 import { PageView } from '../types';
 import { ETSymbol } from './ETLogo';
 import { BRAND } from '../data/brand';
+import { LiquidGlassButton } from './glass/LiquidGlassButton';
+import { PrismaticGlassBar } from './glass/PrismaticGlassBar';
 import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
@@ -10,8 +12,11 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer id="app-footer" className="bg-[#0A0A0A] text-white pt-16 pb-12 border-t border-[#0A0A0A]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer id="app-footer" className="bg-[#0A0A0A] text-white pt-0 pb-12 relative overflow-hidden">
+      {/* Prismatic glass dividing bar at transition */}
+      <PrismaticGlassBar />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         {/* Top Architectural Statement */}
         <div className="pb-12 border-b border-white/10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="max-w-2xl">
@@ -28,27 +33,29 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <button
+            <LiquidGlassButton
               id="footer-start-project-btn"
+              variant="vermilion"
+              size="md"
               onClick={() => {
                 onNavigate('contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3.5 bg-[#FF4A16] hover:bg-[#E03F0E] text-white font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center gap-2 group rounded-[2px]"
+              icon={<ArrowUpRight className="w-4 h-4" />}
             >
-              <span>DÉMARRER UNE MISSION</span>
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-            <button
+              DÉMARRER UNE MISSION
+            </LiquidGlassButton>
+            <LiquidGlassButton
               id="footer-explore-work-btn"
+              variant="secondary"
+              size="md"
               onClick={() => {
                 onNavigate('work');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3.5 bg-transparent hover:bg-white/5 text-white border border-white/20 font-bold text-xs tracking-wider uppercase transition-colors cursor-pointer rounded-[2px]"
             >
               VOIR LE PORTFOLIO
-            </button>
+            </LiquidGlassButton>
           </div>
         </div>
 

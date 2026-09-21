@@ -45,10 +45,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
         initial={shouldReduceMotion ? { opacity: 1 } : { y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.35, ease: MOTION_EASE }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out specular-top ${
           isScrolled
-            ? 'bg-[#FAF8F6]/95 backdrop-blur-md border-b border-[#0A0A0A]/10 py-2.5 sm:py-3 shadow-2xs text-[#0A0A0A]'
-            : 'bg-[#FAF8F6] border-b border-[#0A0A0A]/5 py-4 sm:py-5 text-[#0A0A0A]'
+            ? 'glass-floating border-b border-white/80 py-2.5 sm:py-3 shadow-[0_12px_32px_-10px_rgba(10,10,10,0.08)] text-[#0A0A0A]'
+            : 'bg-white/40 backdrop-blur-md border-b border-white/40 py-4 sm:py-5 text-[#0A0A0A]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -71,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           </a>
 
           {/* Desktop Navigation Links: CALM, LEGIBLE, ELEGANT with micro-interactions */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-1.5 p-1 bg-white/40 backdrop-blur-md border border-white/60 rounded-[3px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
             {navItems.map((item) => {
               const isActive = currentView === item.id;
               return (
@@ -83,24 +83,24 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                     e.preventDefault();
                     handleNavClick(item.id);
                   }}
-                  className={`group relative text-xs tracking-[0.14em] font-medium py-1 transition-colors duration-150 cursor-pointer flex items-center gap-1.5 ${
+                  className={`group relative text-xs tracking-[0.12em] font-medium px-3.5 py-1.5 transition-all duration-150 cursor-pointer flex items-center gap-1.5 rounded-[2px] ${
                     isActive
-                      ? 'text-[#0A0A0A] font-bold'
-                      : 'text-[#656565] hover:text-[#0A0A0A]'
+                      ? 'bg-white text-[#0A0A0A] font-bold shadow-xs border border-white/80'
+                      : 'text-[#555555] hover:text-[#0A0A0A] hover:bg-white/40'
                   }`}
                 >
                   <span
                     className={`text-[9px] font-mono transition-transform duration-150 inline-block group-hover:translate-x-0.5 ${
                       isActive
                         ? 'text-[#FF4A16]'
-                        : 'text-[#999999] group-hover:text-[#FF4A16]'
+                        : 'text-[#888888] group-hover:text-[#FF4A16]'
                     }`}
                   >
                     {item.micro}/
                   </span>
                   <span>{item.label}</span>
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#FF4A16]" />
+                    <span className="absolute -bottom-[5px] left-3 right-3 h-[1.5px] bg-[#FF4A16] rounded-full" />
                   )}
                 </a>
               );
@@ -116,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 e.preventDefault();
                 handleNavClick('contact');
               }}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#FF4A16] hover:bg-[#E03F0E] text-white px-4 py-2.5 rounded-[2px] font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer group active:scale-[0.98] shadow-sm"
+              className="hidden sm:inline-flex items-center gap-2 bg-[#FF4A16] hover:bg-[#E03F0E] text-white px-4 py-2.5 rounded-[2px] font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer group active:scale-[0.98] shadow-[0_4px_16px_rgba(255,74,22,0.3),inset_0_1px_1px_rgba(255,255,255,0.4)] border border-[#FF4A16]"
             >
               <span>START A PROJECT</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             <button
               id="mobile-nav-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#0A0A0A] hover:text-[#FF4A16] focus:outline-none"
+              className="md:hidden p-2 text-[#0A0A0A] hover:text-[#FF4A16] focus:outline-none rounded-[2px] bg-white/50 backdrop-blur-sm border border-white/60"
               aria-label="Ouvrir le menu de navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -139,11 +139,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
       {mobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
-          className="fixed inset-0 z-40 bg-[#FAF8F6] text-[#0A0A0A] pt-24 px-6 pb-8 flex flex-col justify-between overflow-y-auto md:hidden animate-in fade-in duration-150"
+          className="fixed inset-0 z-40 bg-[#FAF8F6]/95 backdrop-blur-xl text-[#0A0A0A] pt-24 px-6 pb-8 flex flex-col justify-between overflow-y-auto md:hidden animate-in fade-in duration-150"
         >
           <div className="flex flex-col space-y-4">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#666666] border-b border-[#0A0A0A]/10 pb-2">
-              EXCELLENCE TEAM / 2026
+            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#666666] border-b border-[#0A0A0A]/10 pb-2 flex items-center justify-between">
+              <span>EXCELLENCE TEAM / 2026</span>
+              <span className="text-[#FF4A16] font-bold">11 TALENTS</span>
             </div>
             {navItems.map((item) => {
               const isActive = currentView === item.id;
@@ -155,8 +156,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                     e.preventDefault();
                     handleNavClick(item.id);
                   }}
-                  className={`flex items-center justify-between text-left py-3 border-b border-[#0A0A0A]/10 text-lg font-bold uppercase tracking-wider cursor-pointer ${
-                    isActive ? 'text-[#FF4A16]' : 'text-[#0A0A0A] hover:text-[#FF4A16]'
+                  className={`flex items-center justify-between text-left py-3.5 px-4 rounded-[2px] border transition-all text-base font-bold uppercase tracking-wider cursor-pointer ${
+                    isActive
+                      ? 'bg-white border-[#FF4A16]/40 text-[#FF4A16] shadow-xs'
+                      : 'bg-white/40 border-white/60 text-[#0A0A0A] hover:text-[#FF4A16]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -176,7 +179,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 e.preventDefault();
                 handleNavClick('contact');
               }}
-              className="w-full py-4 bg-[#FF4A16] text-white font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 rounded-[2px]"
+              className="w-full py-4 bg-[#FF4A16] text-white font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 rounded-[2px] shadow-[0_4px_16px_rgba(255,74,22,0.3)]"
             >
               <span>START A PROJECT</span>
               <ArrowRight className="w-4 h-4" />

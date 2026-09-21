@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { BRAND } from '../data/brand';
+import { LiquidGlassCard } from './glass/LiquidGlassCard';
+import { LiquidGlassButton } from './glass/LiquidGlassButton';
+import { LiquidGlassBadge } from './glass/LiquidGlassBadge';
 import { Send, CheckCircle2, Copy, Check, MessageSquare, Mail, Phone, MapPin, ArrowRight, Shield } from 'lucide-react';
 
 export const ContactForm: React.FC = () => {
@@ -68,15 +71,15 @@ ${formData.message}`;
   )}&body=${encodeURIComponent(formattedSummary)}`;
 
   return (
-    <div id="contact-experience-module" className="bg-white border border-[#0A0A0A]/10 shadow-xs rounded-[2px]">
+    <LiquidGlassCard id="contact-experience-module" material="highlight" className="p-0 overflow-hidden">
       {/* Mode Switcher */}
-      <div className="flex border-b border-[#0A0A0A]/10 bg-[#FAF8F6]">
+      <div className="flex border-b border-[#0A0A0A]/10 bg-white/40 backdrop-blur-md">
         <button
           type="button"
           onClick={() => setFormMode('project')}
           className={`flex-1 py-4 px-6 text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
             formMode === 'project'
-              ? 'bg-white text-[#0A0A0A] border-b-2 border-b-[#FF4A16] shadow-xs'
+              ? 'bg-white/90 text-[#0A0A0A] border-b-2 border-b-[#FF4A16] shadow-xs'
               : 'text-[#656565] hover:text-[#0A0A0A]'
           }`}
         >
@@ -89,7 +92,7 @@ ${formData.message}`;
           onClick={() => setFormMode('general')}
           className={`flex-1 py-4 px-6 text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
             formMode === 'general'
-              ? 'bg-white text-[#0A0A0A] border-b-2 border-b-[#FF4A16] shadow-xs'
+              ? 'bg-white/90 text-[#0A0A0A] border-b-2 border-b-[#FF4A16] shadow-xs'
               : 'text-[#656565] hover:text-[#0A0A0A]'
           }`}
         >
@@ -119,7 +122,7 @@ ${formData.message}`;
             </div>
 
             {/* Direct Send Buttons */}
-            <div className="p-5 bg-[#FAF8F6] border border-[#0A0A0A]/10 max-w-lg mx-auto text-left space-y-3 rounded-[2px]">
+            <div className="p-5 bg-white/60 border border-[#0A0A0A]/10 max-w-lg mx-auto text-left space-y-3 rounded-[2px]">
               <div className="text-[11px] font-mono text-[#656565] uppercase font-bold flex items-center justify-between">
                 <span>RÉCAPITULATIF TECHNIQUE PRÉPARÉ</span>
                 <button
@@ -166,7 +169,7 @@ ${formData.message}`;
                   placeholder="Ex. Christian Dossou"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                  className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
                 />
               </div>
 
@@ -179,7 +182,7 @@ ${formData.message}`;
                   placeholder="Ex. Sahel Logistics Group"
                   value={formData.organization}
                   onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                  className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
                 />
               </div>
             </div>
@@ -196,7 +199,7 @@ ${formData.message}`;
                   placeholder="contact@entreprise.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                  className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
                 />
               </div>
 
@@ -209,7 +212,7 @@ ${formData.message}`;
                   placeholder="+229 XX XX XX XX"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                  className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
                 />
               </div>
             </div>
@@ -230,8 +233,8 @@ ${formData.message}`;
                         onClick={() => setFormData({ ...formData, projectType: type })}
                         className={`p-3 text-left border text-xs transition-all cursor-pointer rounded-[2px] ${
                           formData.projectType === type
-                            ? 'bg-[#0A0A0A] text-white border-[#0A0A0A] font-semibold shadow-xs'
-                            : 'bg-[#FAF8F6] text-[#444444] border-[#0A0A0A]/10 hover:border-[#0A0A0A]/30'
+                            ? 'bg-[#0A0A0A] text-white border-[#0A0A0A] font-semibold shadow-sm'
+                            : 'bg-white/60 text-[#444444] border-[#0A0A0A]/10 hover:border-[#0A0A0A]/30 hover:bg-white'
                         }`}
                       >
                         {type}
@@ -249,7 +252,7 @@ ${formData.message}`;
                     <select
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                      className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
                     >
                       {budgetOptions.map((opt) => (
                         <option key={opt} value={opt}>
@@ -266,7 +269,7 @@ ${formData.message}`;
                     <select
                       value={formData.timeline}
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                      className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
                     >
                       {timelineOptions.map((opt) => (
                         <option key={opt} value={opt}>
@@ -296,7 +299,7 @@ ${formData.message}`;
                 }
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 bg-[#FAF8F6] border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
+                className="w-full px-4 py-3 bg-white/70 border border-[#0A0A0A]/15 text-sm text-[#0A0A0A] placeholder-[#999999] focus:outline-none focus:border-[#FF4A16] focus:bg-white transition-all rounded-[2px]"
               />
             </div>
 
@@ -309,17 +312,19 @@ ${formData.message}`;
                 </span>
               </div>
 
-              <button
+              <LiquidGlassButton
                 type="submit"
-                className="w-full sm:w-auto px-8 py-4 bg-[#FF4A16] hover:bg-[#E03F0E] text-white font-bold text-xs tracking-widest uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-xs rounded-[2px] active:scale-[0.99]"
+                variant="vermilion"
+                size="lg"
+                icon={<ArrowRight className="w-4 h-4" />}
+                className="w-full sm:w-auto"
               >
-                <span>TRANSMETTRE LA DEMANDE</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                TRANSMETTRE LA DEMANDE
+              </LiquidGlassButton>
             </div>
           </form>
         )}
       </div>
-    </div>
+    </LiquidGlassCard>
   );
 };

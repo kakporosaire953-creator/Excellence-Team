@@ -5,6 +5,10 @@ import { ETSymbol, ETLogo } from './ETLogo';
 import { ExcellenceTextBuild } from './ExcellenceTextBuild';
 import { RedSignal, LivingGrid, MOTION_EASE } from './motion/MotionPrimitives';
 import { AnimatedNumber } from './motion/AnimatedNumber';
+import { OpticalCaustic } from './glass/OpticalCaustic';
+import { LiquidGlassBadge } from './glass/LiquidGlassBadge';
+import { LiquidGlassButton } from './glass/LiquidGlassButton';
+import { PrismaticGlassBar } from './glass/PrismaticGlassBar';
 import { ArrowRight, ArrowUpRight, ShieldCheck, Terminal, Cpu, CheckCircle2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 
@@ -19,8 +23,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <section
       id="hero-section"
-      className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 bg-[#FAF8F6] text-[#0A0A0A] border-b border-[#0A0A0A]/10 overflow-hidden"
+      className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 bg-transparent text-[#0A0A0A] border-b border-[#0A0A0A]/10 overflow-hidden"
     >
+      {/* Level 1: Atmospheric Environmental Caustics */}
+      <OpticalCaustic intensity="medium" position="dual" />
+
       {/* Subtle Living Grid overlay */}
       <LivingGrid columns={4} />
 
@@ -44,16 +51,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <div className="h-4 w-[1px] bg-[#0A0A0A]/20 hidden sm:block" />
 
             {/* Step 2: Micro-label EXCELLENCE TEAM / */}
-            <motion.span
+            <motion.div
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -6 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.35, ease: MOTION_EASE, delay: 0.22 }}
-              className="text-[#FF4A16] font-bold tracking-widest uppercase flex items-center gap-1 text-[11px]"
+              className="flex items-center gap-2"
             >
-              <span>EXCELLENCE TEAM</span>
-              <RedSignal type="slash" />
-              <span className="text-[#0A0A0A] font-semibold">2026 MATURITY</span>
-            </motion.span>
+              <LiquidGlassBadge variant="vermilion" size="xs">
+                EXCELLENCE TEAM
+              </LiquidGlassBadge>
+              <span className="text-[#0A0A0A] font-semibold text-[11px] uppercase tracking-wider hidden sm:inline-block">
+                2026 MATURITY
+              </span>
+            </motion.div>
           </div>
 
           {/* Telemetry metadata */}
@@ -67,19 +77,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <span>•</span>
             <span>11 TALENTS</span>
             <span>•</span>
-            <span className="text-[#FF4A16] font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A16] animate-pulse" />
+            <LiquidGlassBadge variant="dark" size="xs" indicator>
               DISCIPLINE FIRST
-            </span>
+            </LiquidGlassBadge>
           </motion.div>
         </div>
 
         {/* ========================================================
             MAIN HERO GRID:
             LEFT: Step 3 Headline, Step 4 Description, Step 5 CTAs
-            RIGHT: Step 6 Grande Zone Rouge-Orange (#FF4A16)
+            RIGHT: Step 6 Grande Zone Rouge-Orange (#FF4A16) in Liquid Glass
             ======================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start pt-10 sm:pt-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start pt-10 sm:pt-14">
           {/* Left Column (7 cols): Typography, Description, CTAs */}
           <div className="lg:col-span-7 space-y-6">
             {/* Step 3: Progressive Headline Reveal (EXCELLENCE TEXT BUILD) */}
@@ -99,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 delay: shouldReduceMotion ? 0 : 1.0,
                 ease: MOTION_EASE,
               }}
-              className="text-base sm:text-lg md:text-xl text-[#555555] max-w-2xl leading-relaxed font-normal pt-2"
+              className="text-base sm:text-lg md:text-xl text-[#444444] max-w-2xl leading-relaxed font-normal pt-2"
             >
               Excellence Team conçoit, développe, sécurise et déploie des solutions logicielles répondant à des besoins réels. 11 talents au service d’organisations exigeantes au Bénin et en Afrique francophone.
             </motion.p>
@@ -115,29 +124,31 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               }}
               className="pt-4 flex flex-wrap items-center gap-3 sm:gap-4"
             >
-              <button
+              <LiquidGlassButton
                 id="hero-cta-start-project"
+                variant="primary"
+                size="lg"
                 onClick={() => onNavigate('contact')}
-                className="px-7 py-4 bg-[#FF4A16] hover:bg-[#E03F0E] text-white font-bold text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-2 cursor-pointer rounded-[2px] shadow-md active:scale-[0.98] group"
+                icon={<ArrowRight className="w-4 h-4" />}
               >
-                <span>START A PROJECT</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
+                START A PROJECT
+              </LiquidGlassButton>
 
-              <button
+              <LiquidGlassButton
                 id="hero-cta-explore-work"
+                variant="secondary"
+                size="lg"
                 onClick={() => onNavigate('work')}
-                className="px-7 py-4 bg-white hover:bg-[#0A0A0A]/5 text-[#0A0A0A] border border-[#0A0A0A]/20 hover:border-[#0A0A0A] font-bold text-xs tracking-widest uppercase transition-all duration-200 flex items-center gap-2 cursor-pointer rounded-[2px] group shadow-2xs"
+                icon={<ArrowUpRight className="w-4 h-4" />}
               >
-                <span>EXPLORE OUR WORK</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
+                EXPLORE OUR WORK
+              </LiquidGlassButton>
             </motion.div>
           </div>
 
           {/* ========================================================
               STEP 6: LA GRANDE ZONE ROUGE-ORANGE (#FF4A16)
-              Bold architectural canvas with high-contrast black/white interface
+              Sculpted Liquid Glass Core Spec Console with optical depth
               ======================================================== */}
           <motion.div
             initial={
@@ -156,43 +167,49 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             }}
             className="lg:col-span-5"
           >
-            {/* The Grande Zone Rouge-Orange */}
-            <div className="bg-[#FF4A16] text-[#0A0A0A] p-6 sm:p-7 md:p-8 rounded-[2px] shadow-2xl relative overflow-hidden flex flex-col justify-between space-y-6">
+            {/* The Sculpted Liquid Glass Chamber */}
+            <div className="relative bg-[#FF4A16] text-[#0A0A0A] p-6 sm:p-7 md:p-8 rounded-[4px] shadow-[0_24px_60px_-15px_rgba(255,74,22,0.35),inset_0_1px_2px_rgba(255,255,255,0.45)] border border-[#FF4A16]/50 overflow-hidden flex flex-col justify-between space-y-6">
+              {/* Internal Specular Edge */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent"
+              />
+
               {/* Architectural header inside red-orange */}
               <div className="flex items-center justify-between border-b border-[#0A0A0A]/20 pb-4">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 bg-[#0A0A0A] text-white text-[10px] font-mono tracking-widest uppercase font-bold rounded-[1px]">
+                  <span className="px-2.5 py-0.5 bg-[#0A0A0A] text-white text-[10px] font-mono tracking-widest uppercase font-bold rounded-[2px] shadow-xs">
                     SYSTEM SPEC
                   </span>
                   <span className="text-xs font-mono font-bold text-[#0A0A0A] tracking-wider">
                     CORE.INFRA
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-[#0A0A0A]/80 font-bold">
+                <span className="text-[11px] font-mono text-[#0A0A0A]/85 font-bold">
                   ORG.ET-2026
                 </span>
               </div>
 
-              {/* Real Product Interface Preview: Codetovecto AST & Pentest telemetry */}
-              <div className="bg-[#0A0A0A] text-white p-4 sm:p-5 rounded-[2px] border border-black/20 shadow-inner font-mono text-xs space-y-3">
+              {/* Smoked Obsidian Glass Terminal Box */}
+              <div className="glass-deep text-white p-4 sm:p-5 rounded-[3px] border border-white/15 font-mono text-xs space-y-3 relative overflow-hidden">
                 <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF4A16]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-white/30" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF4A16] shadow-[0_0_8px_#FF4A16]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
                     <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                    <span className="text-[10px] text-white/70 ml-1">codetovecto-core::ast</span>
+                    <span className="text-[10px] text-white/80 ml-1">codetovecto-core::ast</span>
                   </div>
-                  <span className="text-[9.5px] text-[#FF4A16] font-bold">PRODUCTION LIVE</span>
+                  <span className="text-[9.5px] text-[#FF4A16] font-bold tracking-wider">PRODUCTION LIVE</span>
                 </div>
 
-                <div className="space-y-1 text-[11px] text-[#A0A0A0] leading-relaxed">
+                <div className="space-y-1.5 text-[11px] text-[#B5B5B5] leading-relaxed">
                   <p>
-                    <span className="text-[#FF4A16]">$</span> cargo run --release --bin ast_vectorizer
+                    <span className="text-[#FF4A16] font-bold">$</span> cargo run --release --bin ast_vectorizer
                   </p>
-                  <p className="text-white/90">
+                  <p className="text-white/95 flex items-center gap-1.5">
                     <span className="text-emerald-400">✓</span> Parser tree loaded (74.2 kLOC parsed)
                   </p>
-                  <p className="text-white/90">
+                  <p className="text-white/95 flex items-center gap-1.5">
                     <span className="text-emerald-400">✓</span> High-dimensional embedding pipeline ready
                   </p>
                   <p className="text-white/70 text-[10px] pt-1">
@@ -201,10 +218,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* 4 Technical metrics row */}
+              {/* 4 Optical Glass Metrics Tiles */}
               <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
-                <div className="p-3 bg-white/15 border border-[#0A0A0A]/10 rounded-[2px]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/70 font-semibold">
+                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
                     COLLECTIF STRUCTURÉ
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -212,8 +229,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/15 border border-[#0A0A0A]/10 rounded-[2px]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/70 font-semibold">
+                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
                     DIRECTION
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -221,8 +238,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/15 border border-[#0A0A0A]/10 rounded-[2px]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/70 font-semibold">
+                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
                     EXPANSION
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -230,8 +247,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/15 border border-[#0A0A0A]/10 rounded-[2px]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/70 font-semibold">
+                <div className="p-3 bg-white/25 backdrop-blur-md border border-white/40 rounded-[2px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#0A0A0A]/75 font-bold">
                     EXIGENCE
                   </div>
                   <div className="text-xl sm:text-2xl font-black text-[#0A0A0A] mt-0.5">
@@ -252,7 +269,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         </div>
 
         {/* ========================================================
-            KEY METRICS BAR (Architectural light styling with Red-Orange accents)
+            KEY METRICS BAR: Crystalline Liquid Glass Console
             ======================================================== */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
@@ -262,7 +279,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             delay: shouldReduceMotion ? 0 : 0.85,
             ease: MOTION_EASE,
           }}
-          className="mt-14 pt-8 border-t border-[#0A0A0A]/10 grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="mt-14 p-6 sm:p-8 glass-primary rounded-[4px] border border-white/80 shadow-[0_12px_36px_-8px_rgba(10,10,10,0.05)] grid grid-cols-2 md:grid-cols-4 gap-6 specular-top"
         >
           {BRAND.stats.map((stat, idx) => (
             <div key={idx} className="border-l-2 border-[#FF4A16] pl-4 py-1">
@@ -273,7 +290,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   delay={shouldReduceMotion ? 0 : 0.85 + idx * 0.12}
                 />
               </div>
-              <div className="text-xs font-bold uppercase tracking-wider text-[#333333] mt-0.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#222222] mt-0.5">
                 {stat.label}
               </div>
               <div className="text-[11px] text-[#666666] font-mono mt-0.5">
@@ -282,6 +299,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             </div>
           ))}
         </motion.div>
+
+        {/* The Signature Visual Prismatic Glass Bar */}
+        <div className="mt-8">
+          <PrismaticGlassBar label="EXCELLENCE TEAM // COTONOU — AFRIQUE FRANCOPHONE" />
+        </div>
       </div>
     </section>
   );
